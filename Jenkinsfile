@@ -8,10 +8,10 @@ pipeline {
   stages {
     stage('Build container') {
       steps {
-        sh "docker build \
+        sh '''docker build \
           --build-arg VCS_REF="$GIT_SHA1" \
           --build-arg BUILD_DATE="$(date --rfc-3339 ns)" \
-          -t ${REGISTRY}/docker-socket-proxy:latest ."
+          -t ${REGISTRY}/docker-socket-proxy:latest .'''
       }
     }
 
